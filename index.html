@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Declaración del conjunto de caracteres utilizados -->
+    <meta charset="utf-8" />
+    <!-- Título de la página -->
+    <title>LA LEYENDA DE AANG: AVATAR</title>
+    <!-- Enlace al archivo JavaScript externo -->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Video de fondo -->
+    <video autoplay muted loop id="video-fondo">
+        <source src="assets/fuego3.mp4" type="video/mp4">
+    </video>
+    <img class="foto-avatar-png" src="assets/peakpx (2) copia.png" alt="imagen aang">
+    <!-- Encabezado principal, estático (no cambia), usado una sola vez -->
+    <h1>AVATAR</h1>
+
+    <section id="inicio">
+        <!-- Botón para reiniciar el juego -->
+        <!-- Bot贸n para jugar -->
+        <button id="boton-jugar" class="button" data-text="Jugar">
+            <span class="actual-text">&nbsp;Jugar&nbsp;</span>
+            <span aria-hidden="true" class="hover-text">&nbsp;Jugar&nbsp;</span>
+        </button>
+
+        <!-- Bot贸n para reglas del juego -->
+        <button id="boton-reglas" class="button" data-text="Reglas del Juego">
+            <span class="actual-text">&nbsp;Reglas&nbsp;</span>
+            <span aria-hidden="true" class="hover-text">&nbsp;Reglas&nbsp;</span>
+        </button>
+        <!-- Botón para reiniciar el juego -->
+
+    </section>
+    <section id="reglas-del-juego">
+        <h4>REGLAS DEL JUEGO</h4>
+        <ol>
+            <li><strong>Selección de Personajes:</strong>
+                <ul>
+                    <li>El jugador elige uno de los cuatro personajes: Zuko, Katara, Aang, o Toph.</li>
+                    <li>El enemigo es asignado aleatoriamente de entre estos personajes.</li>
+                </ul>
+            </li>
+            <li><strong>Ataques:</strong>
+                <ul>
+                    <li>El jugador elige entre tres ataques: Puño, Patada, y Barrida.</li>
+                    <li>El enemigo elige su ataque aleatoriamente.</li>
+                </ul>
+            </li>
+            <li><strong>Reglas del Combate:</strong>
+                <ul>
+                    <li><strong>Empate:</strong> Si ambos eligen el mismo ataque.</li>
+                    <li><strong>Victoria del Jugador:</strong>
+                        <ul>
+                            <li>Puño 👊 vence a Barrida 👣.</li>
+                            <li>Patada 🦵 vence a Puño 👊.</li>
+                            <li>Barrida 👣 vence a Patada 🦵.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Derrota del Jugador:</strong> Cualquier otra combinación.</li>
+                </ul>
+            </li>
+            <li><strong>Vidas:</strong>
+                <ul>
+                    <li>Ambos comienzan con 3 vidas.</li>
+                    <li>Perder un combate disminuye una vida.</li>
+                </ul>
+            </li>
+            <li><strong>Fin del Juego:</strong>
+                <ul>
+                    <li><strong>Victoria del Jugador:</strong> Enemigo pierde todas sus vidas.</li>
+                    <li><strong>Derrota del Jugador:</strong> Jugador pierde todas sus vidas.</li>
+                    <li>Se deshabilitan los botones de ataque y se muestra un botón para reiniciar el juego.</li>
+                </ul>
+            </li>
+            <li><strong>Reinicio del Juego:</strong>
+                <ul>
+                    <li>El jugador puede reiniciar el juego, recargando la página.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Sección para la selección de personajes -->
+    <section id="seleccionar-personaje">
+        <h2>Elige tu Personaje</h2> <!-- Encabezado de segundo nivel para la sección de selección de personajes -->
+
+        <!-- Etiqueta para el personaje Zuko -->
+        <label for="zuko">Zuko</label>
+        <!-- Input tipo radio para seleccionar a Zuko, agrupado bajo el mismo nombre "personaje" -->
+        <input type="radio" name="personaje" id="zuko" />
+
+        <!-- Etiqueta para el personaje Katara -->
+        <label for="katara">Katara</label>
+        <!-- Input tipo radio para seleccionar a Katara -->
+        <input type="radio" name="personaje" id="katara" />
+
+        <!-- Etiqueta para el personaje Aang -->
+        <label for="aang">Aang</label>
+        <!-- Input tipo radio para seleccionar a Aang -->
+        <input type="radio" name="personaje" id="aang" />
+
+        <!-- Etiqueta para el personaje Toph -->
+        <label for="toph">Toph</label>
+        <!-- Input tipo radio para seleccionar a Toph -->
+        <input type="radio" name="personaje" id="toph" />
+
+        <!-- Botón para confirmar la selección del personaje -->
+        <button id="boton-personaje">Seleccionar</button>
+    </section>
+
+    <!-- Sección para la selección de ataques -->
+    <section id="seleccionar-ataque">
+        <h2>Elige tu ataque</h2> <!-- Encabezado de segundo nivel para la sección de selección de ataques -->
+
+        <!-- Información del personaje seleccionado por el jugador y sus vidas -->
+        <p>Tu personaje <span id="personaje-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
+
+        <!-- Información del personaje enemigo y sus vidas -->
+        <p>El personaje enemigo <span id="personaje-enemigo"></span> tiene <span id="vidas-enemigo">3</span> vidas</p>
+
+        <!-- Botones para seleccionar los diferentes tipos de ataque -->
+        <p>
+            <button id="boton-punio">Puño 👊</button>
+            <button id="boton-patada">Patada 🦵</button>
+            <button id="boton-barrida">Barrida 👣</button>
+        </p>
+    </section>
+
+    <!-- Sección para mostrar mensajes dinámicos durante el juego -->
+    <section id="mensajes">
+    </section>
+
+    <!-- Sección para reiniciar el juego -->
+    <section id="reiniciar">
+        <!-- Botón para reiniciar el juego -->
+        <button id="boton-reiniciar">Reiniciar</button>
+    </section>
+    <!-- Elementos de audio -->
+    <audio id="audio-ambiental" src="assets/music/main-menu.mp3" loop type="audio/mp3"></audio>
+    <audio id="audio-juego" src="assets/music/play-theme.mp3" type="audio/mp3"></audio>
+
+    <!--Efecto de sonido botones-->
+    <audio id="audio-efecto-boton" src="assets/music/boton.mp3"></audio>
+
+    <script src="js/avatar.js" defer></script>
+
+
+</body>
+
+</html>

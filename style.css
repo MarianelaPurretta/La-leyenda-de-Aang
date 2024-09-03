@@ -1,0 +1,199 @@
+/* Estilos generales */
+
+@font-face {
+    font-family: 'Herculanum';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Herculanum'), url('herculanum.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Herculanum', sans-serif;
+}
+
+body {
+
+    background-color: #070707;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Herculanum', sans-serif;
+}
+
+#video-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    /* Asegura que el video esté detrás del contenido */
+}
+
+/* Encabezado principal */
+h1 {
+    margin-top: 10%;
+    font-family: 'Herculanum', sans-serif;
+    color: rgb(7, 7, 7);
+    padding: 20px 0;
+    margin: 0;
+    font-size: 200px;
+    text-align: center;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Animación llamativa para el título */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #6e0303, 0 0 20px #ff0800, 0 0 30px #ff4800, 0 0 40px #f8a01d;
+    }
+
+    to {
+        text-shadow: 0 0 20px #ff8800, 0 0 30px #f5c02f, 0 0 40px #f3f2f0, 0 0 50px #e8eee8;
+    }
+}
+
+.foto-avatar-png {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+    max-width: 25%;
+    height: auto;
+    z-index: 1;
+
+}
+
+/* Variables de colores */
+:root {
+    --primary-color: #000000;
+    /* Color principal del botón */
+    --hover-color: #ffd000;
+    /* Color de texto al hacer hover */
+    --stroke-color: rgba(255, 255, 255, 0.6);
+    /* Color del trazo de texto */
+    --border-right-width: 6px;
+    /* Ancho del borde al hacer hover */
+}
+
+/* Estilo para el botón de "Jugar" centrado en la parte inferior */
+#boton-jugar {
+    color: #131212;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Estilo para el botón de "Reglas del Juego" arriba a la derecha */
+#boton-reglas {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* From Uiverse.io by satyamchaudharydev */
+/* === Removing default button style === */
+.button {
+    margin: 0;
+    height: auto;
+    background: #00000057;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+/* Button styling with variables */
+.button {
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: 5em;
+    position: relative;
+    text-transform: uppercase;
+    color: #131212;
+    -webkit-text-stroke: 1px var(--stroke-color);
+}
+
+/* Text inside the button */
+.actual-text {
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--stroke-color);
+}
+
+/* Text to be revealed on hover */
+.hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    color: var(--hover-color);
+    width: 0%;
+    inset: 0;
+    border-right: var(--border-right-width) solid var(--hover-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--hover-color);
+}
+
+/* Hover effect */
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--hover-color));
+}
+
+/* Cambios de fondo según el personaje */
+body.zuko {
+    background-color: #ff4d4d;
+    /* Rojo fuego */
+}
+
+body.katara {
+    background-color: #4da6ff;
+    /* Azul agua */
+}
+
+body.aang {
+    background-color: #f0f8ff;
+    /* Blanco con un toque de azul aire */
+}
+
+body.toph {
+    background-color: #d2b48c;
+    /* Marrón tierra */
+}
+
+/* Estilo de la selección de texto */
+::selection {
+    background-color: #f19d1f;
+    /* Cambia el color de fondo de la selección */
+    color: #000000;
+    /* Cambia el color del texto seleccionado */
+}
+
+
+/* Personalización de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 12px;
+    /* Ancho de la scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    /* Color de fondo de la pista */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    /* Color del pulgar con gradiente */
+    border-radius: 6px;
+    /* Bordes redondeados */
+    border: 3px solid #f0f0f0;
+    /* Borde alrededor del pulgar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #FFA500, #FFD700);
+    /* Color del pulgar al hacer hover */
+}
