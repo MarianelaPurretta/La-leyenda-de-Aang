@@ -118,24 +118,32 @@
         </div>
 
         <!-- Bot贸n para confirmar la selecci贸n del personaje -->
-        <!--<button id="boton-personaje">Seleccionar</button>-->
+        <button id="boton-personaje" class="button-pers" data-text="Seleccionar">
+            <span class="actual-btn">&nbsp;Seleccionar&nbsp;</span>
+            <span aria-hidden="true" class="hover-text">&nbsp;Seleccionar&nbsp;</span>
+        </button>
     </section>
     <!-- Sección para la selección de ataques -->
     <section id="seleccionar-ataque">
-        <h2>Elige tu ataque</h2> <!-- Encabezado de segundo nivel para la sección de selección de ataques -->
+        <video autoplay muted loop id="video-fondo">
+            <source src="assets/fuego5.mp4" type="video/mp4">
+        </video>
 
-        <!-- Información del personaje seleccionado por el jugador y sus vidas -->
-        <p>Tu personaje <span id="personaje-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
+        <h2 class="elegir">Elige tu ataque</h2>
+        <!-- Encabezado de segundo nivel para la sección de selección de ataques -->
 
-        <!-- Información del personaje enemigo y sus vidas -->
-        <p>El personaje enemigo <span id="personaje-enemigo"></span> tiene <span id="vidas-enemigo">3</span> vidas</p>
+        <div id="personajes-combate">
+            <div id="card-personaje-jugador" class="card"></div>
+            <p id="vs-text">VS</p>
+            <div id="card-personaje-enemigo" class="card"></div>
+        </div>
 
-        <!-- Botones para seleccionar los diferentes tipos de ataque -->
-        <p>
-            <button id="boton-punio">Puño 👊</button>
-            <button id="boton-patada">Patada 🦵</button>
-            <button id="boton-barrida">Barrida 👣</button>
-        </p>
+        <!-- Imágenes para seleccionar los diferentes tipos de ataque -->
+        <div id="btn-ataques">
+            <button id="boton-punio" class="btn-punio">PUÑO</button>
+            <button id="boton-patada" class="btn-patada">PATADA</button>
+            <button id="boton-barrida" class="btn-barrida">BARRIDA</button>
+        </div>
     </section>
 
     <!-- Sección para mostrar mensajes dinámicos durante el juego -->
@@ -145,7 +153,11 @@
     <!-- Sección para reiniciar el juego -->
     <section id="reiniciar">
         <!-- Botón para reiniciar el juego -->
-        <button id="boton-reiniciar">Reiniciar</button>
+        <button id="boton-reiniciar" class="button-rein" data-text="Reiniciar">
+            <span class="rein-btn">&nbsp;Reiniciar&nbsp;</span>
+            <span aria-hidden="true" class="hover-text">&nbsp;Reiniciar&nbsp;</span>
+        </button>
+
     </section>
     <!-- Elementos de audio -->
     <audio id="audio-ambiental" src="assets/music/main-menu.mp3" loop type="audio/mp3"></audio>
