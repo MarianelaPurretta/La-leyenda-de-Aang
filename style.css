@@ -39,7 +39,7 @@ h1 {
     color: #000000;
     padding: 20px 0;
     margin: 0;
-    font-size: 200px;
+    font-size: 150px;
     text-align: center;
     animation: glow 1s ease-in-out infinite alternate;
 }
@@ -75,8 +75,8 @@ h1 {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    top: 15%;
-    max-width: 20%;
+    top: 20%;
+    max-width: 18%;
     height: auto;
     z-index: 1;
     animation: levitar 3s ease-in-out infinite;
@@ -89,7 +89,7 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     top: 63%;
-    width: 12%;
+    width: 10%;
     height: auto;
     z-index: 1;
     animation: levitar 3s ease-in-out infinite;
@@ -116,6 +116,7 @@ h1 {
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 4em;
 }
 
 /* Estilo para el botón de "Reglas del Juego" arriba a la derecha */
@@ -123,6 +124,7 @@ h1 {
     position: absolute;
     top: 20px;
     right: 20px;
+    font-size: 3em;
 }
 
 .button {
@@ -138,7 +140,6 @@ h1 {
 .button {
     letter-spacing: 3px;
     text-decoration: none;
-    font-size: 5em;
     position: relative;
     text-transform: uppercase;
     color: #131212;
@@ -236,10 +237,9 @@ body.toph {
     border-radius: 40px;
     color: rgb(245, 96, 26);
     z-index: 10;
-    width: 200%;
-
+    width: 112%;
     box-shadow: 0 0 30px rgb(252, 30, 1);
-    font-size: 25px;
+    font-size: 18px;
 }
 
 strong {
@@ -247,23 +247,18 @@ strong {
 }
 
 /*Cards de personajes*/
-/* Estilo para el contenedor de las cards */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 80px;
-    /* Espacio entre las cards */
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
-/* Estilo para cada card */
 .card {
     position: relative;
-    width: 300px;
-    /* Aumentado el tamaño de la card */
-    height: 500px;
-    /* Aumentado el tamaño de la card */
+    width: 280px;
+    height: 480px;
     background-color: #000000;
     display: flex;
     flex-direction: column;
@@ -277,37 +272,30 @@ strong {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Estilo para las imágenes dentro de las cards */
 .card img {
     width: 100%;
     height: auto;
     border-radius: 10px;
 }
 
-
-
 h2 {
     color: #fa8e46;
+    margin-top: 0%;
+    font-size: 6px;
 }
 
-/* Efecto hover en la card */
 .card:hover {
     transform: scale(1.1);
-    /* Pequeña animación de escala al hacer hover */
 }
 
-/* Fondo animado de la card */
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
     margin: auto;
     width: 380px;
-    /* Tamaño ajustado según el tamaño de la card */
     height: 400px;
-    /* Tamaño ajustado según el tamaño de la card */
     border-radius: 15px;
-
     z-index: -10;
     pointer-events: none;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.20, 1.275);
@@ -330,6 +318,20 @@ h2 {
 .card:hover::before {
     transform: rotate(-90deg) scaleX(1.5) scaleY(0.9);
 }
+
+/* Estilos para la card seleccionada */
+.card.seleccionada {
+    transform: scale(1.1);
+}
+
+.card.seleccionada::after {
+    filter: blur(50px);
+}
+
+.card.seleccionada::before {
+    transform: rotate(-90deg) scaleX(1.5) scaleY(0.9);
+}
+
 
 /* Ocultar los inputs de radio */
 input[type="radio"] {
