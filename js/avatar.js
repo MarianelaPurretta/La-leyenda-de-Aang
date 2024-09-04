@@ -28,37 +28,47 @@ function mostrarReglas() {
     document.getElementById("reglas-del-juego").style.display = "block";
 }
 
-// Función para seleccionar el personaje del jugador
+// Funci贸n para seleccionar el personaje del jugador
 function seleccionarPersonajeJugador() {
-    // Escondemos la sección del inicio y mostramos la de selección de personaje
+    // Escondemos la secci贸n del inicio y mostramos la de selecci贸n de personaje
     document.getElementById("inicio").style.display = "none";
     document.getElementById("seleccionar-personaje").style.display = "block";
     document.getElementById("reglas-del-juego").style.display = "none";
 
-    // Añadimos el escuchador de eventos al botón de seleccionar personaje
+    // A帽adimos el escuchador de eventos al bot贸n de seleccionar personaje
+    document.getElementById('boton-personaje').addEventListener('click', confirmarPersonajeJugador);
+}
+// Funci贸n para seleccionar el personaje del jugador
+function seleccionarPersonajeJugador() {
+    // Escondemos la secci贸n del inicio y mostramos la de selecci贸n de personaje
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("seleccionar-personaje").style.display = "block";
+    document.getElementById("reglas-del-juego").style.display = "none";
+
+    // Seleccionar una tarjeta de personaje
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Remover la clase "seleccionada" de todas las tarjetas
+            cards.forEach(c => c.classList.remove('seleccionada'));
+            // A帽adir la clase "seleccionada" a la tarjeta clicada
+            card.classList.add('seleccionada');
+        });
+    });
+
+    // A帽adimos el escuchador de eventos al bot贸n de seleccionar personaje
     document.getElementById('boton-personaje').addEventListener('click', confirmarPersonajeJugador);
 }
 
-// Función para confirmar el personaje seleccionado por el jugador
+// Funci贸n para confirmar el personaje seleccionado por el jugador
 function confirmarPersonajeJugador() {
-    let inputZuko = document.getElementById('zuko');
-    let inputKatara = document.getElementById('katara');
-    let inputAang = document.getElementById('aang');
-    let inputToph = document.getElementById('toph');
+    let selectedCard = document.querySelector('.card.seleccionada');
     let spanPersonajeJugador = document.getElementById('personaje-jugador');
 
-    if (inputZuko.checked) {
-        spanPersonajeJugador.innerHTML = 'Zuko';
-        document.body.className = 'zuko'; // Aplica la clase para fondo rojo
-    } else if (inputKatara.checked) {
-        spanPersonajeJugador.innerHTML = 'Katara';
-        document.body.className = 'katara'; // Aplica la clase para fondo color agua
-    } else if (inputAang.checked) {
-        spanPersonajeJugador.innerHTML = 'Aang';
-        document.body.className = 'aang'; // Aplica la clase para fondo color aire
-    } else if (inputToph.checked) {
-        spanPersonajeJugador.innerHTML = 'Toph';
-        document.body.className = 'toph'; // Aplica la clase para fondo color tierra
+    if (selectedCard) {
+        const personajeId = selectedCard.id;
+        spanPersonajeJugador.innerHTML = personajeId.charAt(0).toUpperCase() + personajeId.slice(1);
+        document.body.className = personajeId; // Aplica la clase para fondo espec铆fico
     } else {
         let mensajeError = document.createElement("p");
         mensajeError.innerHTML = 'Selecciona un personaje';
@@ -78,13 +88,12 @@ function confirmarPersonajeJugador() {
     seleccionarPersonajeEnemigo();
 }
 
-
-// Función para seleccionar el personaje enemigo al azar
+// Funci贸n para seleccionar el personaje enemigo al azar
 function seleccionarPersonajeEnemigo() {
     let personajeAleatorio = aleatorio(1, 4);
     let spanPersonajeEnemigo = document.getElementById('personaje-enemigo');
 
-    // Asignamos el personaje enemigo basado en el número aleatorio generado
+    // Asignamos el personaje enemigo basado en el n煤mero aleatorio generado
     if (personajeAleatorio == 1) {
         spanPersonajeEnemigo.innerHTML = 'Zuko';
     } else if (personajeAleatorio == 2) {
@@ -94,6 +103,11 @@ function seleccionarPersonajeEnemigo() {
     } else {
         spanPersonajeEnemigo.innerHTML = 'Toph';
     }
+}
+
+// Funci贸n para generar un n煤mero aleatorio entre min y max (inclusive)
+function aleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // Funciones para los ataques del jugador
@@ -233,4 +247,65 @@ document.addEventListener('DOMContentLoaded', function () {
         audioAmbiental.currentTime = 0;
         audioJuego.play();
     });
+});
+
+document.getElementById('boton-reglas').addEventListener('click', function () {
+    // Ocultar la imagen de Aang
+    document.querySelector('.foto-avatar-png').style.display = 'none';
+    document.querySelector('.BOLA-avatar-png').style.display = 'none';
+
+    // Mostrar las reglas del juego
+    document.getElementById('reglas-del-juego').style.display = 'block';
+
+    // Opcional: Ocultar el botón de reglas si ya no lo necesitas
+    this.style.display = 'none';
+});
+
+// Seleccionar el bot贸n y la imagen
+const botonJugar = document.getElementById('boton-jugar');
+const imagenAvatar = document.querySelector('.foto-avatar-png');
+const imagenBola = document.querySelector('.BOLA-avatar-png');
+
+// Agregar el evento de clic al bot贸n
+botonJugar.addEventListener('click', () => {
+    // Ocultar la imagen al hacer clic en el bot贸n
+    imagenAvatar.style.display = 'none';
+    imagenBola.style.display = 'none';
+});
+// Rutas de los archivos de sonido en la carpeta assets/music
+const sounds = {
+    zuko: 'assets/music/fuego.mp3',
+    katara: 'assets/music/agua.mp3',
+    aang: 'assets/music/aire.mp3',
+    toph: 'assets/music/tierra.mp3'
+};
+
+// Variable para el sonido actual
+let currentCharacterSound = null;
+
+// Función para reproducir el sonido de un personaje al hacer clic en la card
+function playCharacterSoundOnClick(character) {
+    if (currentCharacterSound) {
+        currentCharacterSound.pause();
+        currentCharacterSound.currentTime = 0;
+    }
+    currentCharacterSound = new Audio(sounds[character]);
+    currentCharacterSound.play();
+}
+
+// Añadir eventos 'click' a cada card
+document.getElementById('zuko').addEventListener('click', function () {
+    playCharacterSoundOnClick('zuko');
+});
+
+document.getElementById('katara').addEventListener('click', function () {
+    playCharacterSoundOnClick('katara');
+});
+
+document.getElementById('aang').addEventListener('click', function () {
+    playCharacterSoundOnClick('aang');
+});
+
+document.getElementById('toph').addEventListener('click', function () {
+    playCharacterSoundOnClick('toph');
 });

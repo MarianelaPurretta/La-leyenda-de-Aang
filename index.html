@@ -19,6 +19,7 @@
     <img class="foto-avatar-png" src="assets/peakpx (2) copia.png" alt="imagen aang">
     <!-- Encabezado principal, estático (no cambia), usado una sola vez -->
     <h1>AVATAR</h1>
+    <img class="BOLA-avatar-png" src="assets/XDZT.gif" alt="BOLAaang">
 
     <section id="inicio">
         <!-- Botón para reiniciar el juego -->
@@ -86,33 +87,39 @@
     </section>
 
     <!-- Sección para la selección de personajes -->
+    <!-- Secci贸n para la selecci贸n de personajes -->
     <section id="seleccionar-personaje">
-        <h2>Elige tu Personaje</h2> <!-- Encabezado de segundo nivel para la sección de selección de personajes -->
+        <h2>Elige tu Personaje</h2>
 
-        <!-- Etiqueta para el personaje Zuko -->
-        <label for="zuko">Zuko</label>
-        <!-- Input tipo radio para seleccionar a Zuko, agrupado bajo el mismo nombre "personaje" -->
-        <input type="radio" name="personaje" id="zuko" />
+        <div class="card-container">
+            <!-- Card para Zuko -->
+            <div class="card" id="zuko">
+                <img src="assets/zuko.webp" alt="Zuko">
 
-        <!-- Etiqueta para el personaje Katara -->
-        <label for="katara">Katara</label>
-        <!-- Input tipo radio para seleccionar a Katara -->
-        <input type="radio" name="personaje" id="katara" />
+            </div>
 
-        <!-- Etiqueta para el personaje Aang -->
-        <label for="aang">Aang</label>
-        <!-- Input tipo radio para seleccionar a Aang -->
-        <input type="radio" name="personaje" id="aang" />
+            <!-- Card para Katara -->
+            <div class="card" id="katara">
+                <img src="assets/katara.png" alt="Katara">
 
-        <!-- Etiqueta para el personaje Toph -->
-        <label for="toph">Toph</label>
-        <!-- Input tipo radio para seleccionar a Toph -->
-        <input type="radio" name="personaje" id="toph" />
+            </div>
 
-        <!-- Botón para confirmar la selección del personaje -->
-        <button id="boton-personaje">Seleccionar</button>
+            <!-- Card para Aang -->
+            <div class="card" id="aang">
+                <img src="assets/aang.jpg" alt="Aang">
+
+            </div>
+
+            <!-- Card para Toph -->
+            <div class="card" id="toph">
+                <img src="assets/thop.jpg" alt="Toph">
+
+            </div>
+        </div>
+
+        <!-- Bot贸n para confirmar la selecci贸n del personaje -->
+        <!--<button id="boton-personaje">Seleccionar</button>-->
     </section>
-
     <!-- Sección para la selección de ataques -->
     <section id="seleccionar-ataque">
         <h2>Elige tu ataque</h2> <!-- Encabezado de segundo nivel para la sección de selección de ataques -->
