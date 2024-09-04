@@ -39,7 +39,7 @@ h1 {
     color: #000000;
     padding: 20px 0;
     margin: 0;
-    font-size: 150px;
+    font-size: 9vw;
     text-align: center;
     animation: glow 1s ease-in-out infinite alternate;
 }
@@ -95,6 +95,75 @@ h1 {
     animation: levitar 3s ease-in-out infinite;
     /* Aplica la animación */
     opacity: 0.8;
+}
+
+/* Media Queries para pantallas medianas */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 9vw;
+    }
+
+    .foto-avatar-png {
+        max-width: 22%;
+        top: 22%;
+    }
+
+    .BOLA-avatar-png {
+        width: 12%;
+        top: 60%;
+    }
+
+    #boton-reglas {
+        font-size: 2.5em;
+    }
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 12vw;
+    }
+
+    .foto-avatar-png {
+        max-width: 30%;
+        top: 25%;
+    }
+
+    .BOLA-avatar-png {
+        width: 18%;
+        top: 53%;
+    }
+
+    #boton-reglas {
+        font-size: 1em;
+        top: 10px;
+        right: 10px;
+        margin-top: 60px;
+        margin-right: 70px;
+    }
+}
+
+/* Media Queries para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 14vw;
+    }
+
+    .foto-avatar-png {
+        max-width: 40%;
+        top: 30%;
+    }
+
+    .BOLA-avatar-png {
+        width: 25%;
+        top: 55%;
+    }
+
+    #boton-reglas {
+        font-size: 1.1em;
+        top: 5px;
+        right: 5px;
+    }
 }
 
 /* Variables de colores */
@@ -172,6 +241,38 @@ h1 {
     filter: drop-shadow(0 0 23px var(--hover-color));
 }
 
+/* Estilos existentes */
+
+#btn-regresar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #830000;
+    color: #f5d109;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btn-regresar:hover {
+    background-color: transparent !important;
+    color: #830000;
+    transform: scale(1.1);
+}
+
+/* Estilo para centrar y separar el botón en pantallas pequeñas y medianas */
+@media (max-width: 1024px) {
+    #btn-regresar {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+
 /* Cambios de fondo según el personaje */
 body.zuko {
     background-color: #ff4d4d;
@@ -227,6 +328,7 @@ body.toph {
     /* Color del pulgar al hacer hover */
 }
 
+/* Estilo general de la sección de reglas del juego */
 #reglas-del-juego {
     position: absolute;
     top: 50%;
@@ -243,7 +345,62 @@ body.toph {
 }
 
 strong {
-    color: #ffffff;
+    color: #fff
+}
+
+/* Estilos para listas sin números ni viñetas */
+#reglas-del-juego ol,
+#reglas-del-juego ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* Estilo para los elementos de la lista */
+#reglas-del-juego li {
+    margin-bottom: 10px;
+}
+
+/* Media Queries para pantallas medianas */
+@media (max-width: 1024px) {
+    #reglas-del-juego {
+        font-size: 16px;
+        width: 90%;
+        padding: 15px;
+        border-radius: 30px;
+    }
+
+    #reglas-del-juego h4 {
+        font-size: 1.5em;
+    }
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    #reglas-del-juego {
+        font-size: 14px;
+        width: 95%;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    #reglas-del-juego h4 {
+        font-size: 1.2em;
+    }
+}
+
+/* Media Queries para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    #reglas-del-juego {
+        font-size: 12px;
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    #reglas-del-juego h4 {
+        font-size: 1em;
+    }
 }
 
 /*Cards de personajes*/
@@ -251,21 +408,26 @@ strong {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 80px;
+    gap: 40px;
+    /* Reduce el gap para pantallas más pequeñas */
     margin-top: 1%;
+    padding: 0 10px;
+    /* Añade padding para que no quede pegado a los bordes */
 }
 
 .card {
     position: relative;
-    width: 280px;
-    height: 480px;
+    width: 220px;
+    /* Reduce el tamaño para pantallas pequeñas */
+    height: 360px;
+    /* Reduce el tamaño para pantallas pequeñas */
     background-color: #000000;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 20px;
-    gap: 40px;
-    border-radius: 15px;
+    padding: 15px;
+    gap: 20px;
+    border-radius: 10px;
     cursor: pointer;
     color: #ec0303;
     box-shadow: 0 4px 8px rgba(185, 37, 0, 0.87);
@@ -281,7 +443,9 @@ strong {
 h2 {
     color: #fa8e46;
     margin-top: 0%;
-    font-size: 6px;
+    font-size: 24px;
+    /* Ajusta el tamaño de la fuente */
+    text-align: center;
 }
 
 .card:hover {
@@ -332,23 +496,59 @@ h2 {
     transform: rotate(-90deg) scaleX(1.5) scaleY(0.9);
 }
 
+.alerta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
-/* Ocultar los inputs de radio */
-input[type="radio"] {
+.alerta-contenido {
+    background: #000000e1;
+    padding: 20px;
+    color: #ffb007;
+    font-weight: 550;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #ce0202ec;
+}
+
+.alerta.oculto {
     display: none;
 }
 
-/* Estilo adicional para el botón de selección */
+#cerrar-alerta {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #9b0303;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#cerrar-alerta:hover {
+    background: transparent;
+    border: 1px solid #9b0303;
+}
+
 #boton-personaje {
-    margin-top: 60px;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #830000;
-    border: 12px;
+    border: 4px;
     border-radius: 10px;
-    color: #0f0f0f;
-    font-size: 40px;
+    color: #f5d109;
+    font-size: 1.5em;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    align-items: center;
+    margin-top: 3%;
 }
 
 #boton-personaje:hover {
@@ -356,33 +556,61 @@ input[type="radio"] {
     box-shadow: 0 4px 15px rgb(248, 182, 2);
 }
 
-/* Layout de las cards en filas centradas */
-#seleccionar-personaje {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .card-container {
+        gap: 20px;
+        /* Reduce el gap aún más */
+    }
+
+    .card {
+        width: 180px;
+        /* Reduce el tamaño de las cards para pantallas pequeñas */
+        height: 300px;
+        /* Ajusta la altura para mantener la proporción */
+        padding: 10px;
+        gap: 15px;
+    }
+
+    h2 {
+        font-size: 18px;
+        /* Ajusta el tamaño del título */
+    }
+
+    #boton-personaje {
+        font-size: 18px;
+        /* Ajusta el tamaño del botón */
+        padding: 6px 12px;
+    }
 }
 
-.actual-btn {
-    color: #f0b803;
+/* Media queries para pantallas muy pequeñas (como móviles) */
+@media (max-width: 480px) {
+    .card-container {
+        gap: 10px;
+        /* Aún más reducido para móviles */
+    }
+
+    .card {
+        width: 150px;
+        /* Ajusta el tamaño para pantallas muy pequeñas */
+        height: 240px;
+        padding: 8px;
+        gap: 10px;
+    }
+
+    h2 {
+        font-size: 16px;
+        /* Ajusta el tamaño del título para móviles */
+    }
+
+    #boton-personaje {
+        font-size: 16px;
+        /* Ajusta el tamaño del botón para móviles */
+        padding: 4px 8px;
+    }
 }
 
-#seleccionar-personaje h2 {
-    font-size: 50px;
-    /* Tamaño más grande para el título de la sección */
-    margin-bottom: 20px;
-    color: #fd1313;
-}
-
-/* Ocultar la imagen foto-avatar-png al hacer clic en "Jugar" */
-#boton-jugar {
-    margin-top: 20px;
-}
-
-#boton-jugar:active+.foto-avatar-png {
-    display: none;
-}
 
 #personajes-combate {
     display: flex;
@@ -392,25 +620,43 @@ input[type="radio"] {
     margin-bottom: 20px;
 }
 
-.card-combate {
-    width: 150px;
-    height: 200px;
-    background-color: #fff;
-    border: 2px solid #000;
+.card-pers {
+    position: relative;
+    width: 230px;
+    height: 380px;
+    background-color: #000000;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    gap: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #ec0303;
     box-shadow: 0 4px 8px rgba(185, 37, 0, 0.87);
+    transition: transform 0.3s ease-in-out;
+    margin-top: 0%;
 }
 
-.card-combate img {
-    max-width: 100%;
-    max-height: 100%;
+.card-pers:hover {
+    transform: scale(1.1);
+}
+
+.card-pers::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 380px;
+    height: 400px;
+    border-radius: 15px;
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.20, 1.275);
 }
 
 #vs-text {
-    font-size: 200px;
+    font-size: 100px;
     font-weight: bold;
     color: #0c0c0b;
     animation: glow 1s ease-in-out infinite alternate;
@@ -418,81 +664,65 @@ input[type="radio"] {
 
 .elegir {
     color: #bb0505;
-    font-size: 3em;
-    ;
+    font-size: 2em;
+
 }
 
 #btn-ataques {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    margin-bottom: 209px;
+    gap: 10px;
+    /* Reduce la separación entre botones */
+    margin-bottom: 30px;
+    /* Ajusta el margen inferior para que quede espacio para los botones */
+    flex-wrap: wrap;
 }
 
-/* Estilos para las imágenes de ataque */
-.btn-punio {
-
-    padding: 10px 20px;
-    background-color: #830000;
-    border: 4px;
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-punio:hover {
-    background-color: transparent;
-    color: #000;
-    box-shadow: 0 4px 15px rgb(248, 2, 2);
-}
-
-.btn-patada {
-
-    padding: 10px 20px;
-    background-color: #830000;
-    border: 4px;
-    border-radius: 10px;
-    color: #fcfcfc;
-    font-size: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-patada:hover {
-    background-color: transparent;
-    color: #000;
-    box-shadow: 0 4px 15px rgb(248, 2, 2);
-}
-
+.btn-punio,
+.btn-patada,
 .btn-barrida {
-
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: #830000;
     border: 4px;
     border-radius: 10px;
-    color: #fcfcfc;
-    font-size: 40px;
+    color: #fcc100;
+    font-size: 16px;
+    font-weight: 600;
+    /* Reduce el tamaño de la fuente */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    max-width: 80px;
+    flex: 1;
 }
 
+.btn-punio:hover,
+.btn-patada:hover,
 .btn-barrida:hover {
     background-color: transparent;
     color: #000;
     box-shadow: 0 4px 15px rgb(248, 2, 2);
 }
 
-/* Estilos para las burbujas de mensaje */
 #mensajes {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin-top: 0px;
-    margin-bottom: 1px;
+    margin-top: -20px;
+    /* Reduce este valor para ajustar las burbujas */
+}
+
+.vidas {
+    font-size: 1em;
+    font-weight: 800;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.vidas-personaje,
+.vidas-enemigo {
+    margin: 0 10px;
+    /* Reduce márgenes laterales */
 }
 
 /* Estilo para la burbuja de mensaje */
@@ -501,10 +731,9 @@ input[type="radio"] {
     color: #fff;
     border-radius: 15px;
     padding: 20px;
-    margin: 20px;
     max-width: 80%;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
     /* Ajusta el tamaño si es necesario */
 }
 
@@ -550,42 +779,17 @@ input[type="radio"] {
     border-radius: 15px;
     padding: 20px;
     margin: 20px;
-    max-width: 80%;
+    max-width: 60%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 /* Animación de entrada de la burbuja final */
-@keyframes animacion-entrada {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Animación de salida de la burbuja final */
-@keyframes animacion-salida {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    to {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-}
-
-/* Animación aplicada */
 .animacion-entrada {
     animation: animacion-entrada 0.5s ease-in-out;
 }
 
+/* Animación de salida de la burbuja final */
 .animacion-salida {
     animation: animacion-salida 0.5s ease-in-out;
 }
@@ -595,13 +799,77 @@ input[type="radio"] {
     background-color: #830000;
     border: 4px;
     border-radius: 10px;
-    color: #0f0f0f;
-    font-size: 40px;
+    color: #f5d109;
+    font-size: 1.5em;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    align-items: center;
 }
 
 #boton-reiniciar:hover {
     background-color: transparent;
     box-shadow: 0 4px 15px rgb(248, 182, 2);
+    color: #000000;
+}
+
+/* Media queries para pantallas pequeñas y medianas */
+@media (max-width: 768px) {
+    .card-pers {
+        max-width: 150px;
+        /* Ajusta el ancho de las tarjetas en pantallas medianas */
+    }
+
+    #vs-text {
+        font-size: 24px;
+        /* Ajusta el tamaño del texto en pantallas medianas */
+    }
+
+    .btn-punio,
+    .btn-patada,
+    .btn-barrida {
+        font-size: 14px;
+        /* Ajusta el tamaño de la fuente en pantallas medianas */
+    }
+
+    .elegir {
+        font-size: 1.2em;
+        /* Ajusta el tamaño del texto en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-pers {
+        max-width: 120px;
+        height: 200px;
+        /* Ajusta el ancho de las tarjetas en pantallas pequeñas */
+    }
+
+    #vs-text {
+        font-size: 20px;
+        /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+
+    .btn-punio,
+    .btn-patada,
+    .btn-barrida {
+        font-size: 12px;
+        /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .elegir {
+        font-size: 1em;
+        /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 1024px) {
+    #mensajes {
+        margin-top: 50px;
+        /* Aumenta el margen superior para pantallas pequeñas y medianas */
+    }
+
+    #boton-reiniciar {
+        margin-top: 60px;
+        /* Aumenta el margen superior para pantallas pequeñas y medianas */
+    }
 }

@@ -29,6 +29,13 @@ function iniciarJuego() {
 function mostrarReglas() {
     document.getElementById("reglas-del-juego").style.display = "block";
 }
+function regresarPantallaPrincipal() {
+    document.getElementById("reglas-del-juego").style.display = "none";
+    location.reload();
+}
+
+// Asignar la función al botón
+document.getElementById("btn-regresar").addEventListener("click", regresarPantallaPrincipal);
 
 // Función para seleccionar el personaje del jugador
 function seleccionarPersonajeJugador() {
@@ -60,13 +67,16 @@ function confirmarPersonajeJugador() {
         personajeJugador = selectedCard.id; // Guarda el id del personaje seleccionado
         document.body.className = personajeJugador; // Aplica la clase para fondo específico
 
+        // Actualiza el nombre del personaje jugador en el HTML
+        document.getElementById('personaje-jugador').textContent = personajeJugador.charAt(0).toUpperCase() + personajeJugador.slice(1);
+
         // Muestra la imagen del personaje seleccionado en la card de combate
         const imgJugador = selectedCard.querySelector('img').cloneNode();
         const cardJugador = document.getElementById('card-personaje-jugador');
         cardJugador.innerHTML = ''; // Limpiar contenido previo
         cardJugador.appendChild(imgJugador);
     } else {
-        alert("Selecciona un personaje");
+        mostrarAlerta("Selecciona un personaje");
         return;
     }
 
@@ -74,6 +84,19 @@ function confirmarPersonajeJugador() {
     document.getElementById("seleccionar-ataque").style.display = "block";
     seleccionarPersonajeEnemigo();
 }
+
+function mostrarAlerta(mensaje) {
+    const alerta = document.getElementById('alerta');
+    const mensajeAlerta = document.getElementById('mensaje-alerta');
+    mensajeAlerta.textContent = mensaje;
+    alerta.classList.remove('oculto');
+}
+
+document.getElementById('cerrar-alerta').addEventListener('click', function () {
+    document.getElementById('alerta').classList.add('oculto');
+});
+
+
 
 // Función para seleccionar el personaje enemigo al azar
 function seleccionarPersonajeEnemigo() {
@@ -92,12 +115,17 @@ function seleccionarPersonajeEnemigo() {
 
     personajeEnemigo = personajeEnemigoId;
 
+    // Actualiza el nombre del personaje enemigo en el HTML
+    document.getElementById('personaje-enemigo').textContent = personajeEnemigoId.charAt(0).toUpperCase() + personajeEnemigoId.slice(1);
+
     // Muestra la imagen del personaje enemigo en la card de combate
     const imgEnemigo = document.getElementById(personajeEnemigoId).querySelector('img').cloneNode();
     const cardEnemigo = document.getElementById('card-personaje-enemigo');
     cardEnemigo.innerHTML = ''; // Limpiar contenido previo
     cardEnemigo.appendChild(imgEnemigo);
 }
+
+
 
 // Función para generar un número aleatorio entre min y max (inclusive)
 function aleatorio(min, max) {
@@ -131,17 +159,16 @@ function reiniciarJuego() {
     location.reload();
 }
 
+// Función combate modificada para manejar música al ganar o perder
 function combate() {
     let spanVidasJugador = document.getElementById("vidas-jugador");
     let spanVidasEnemigo = document.getElementById("vidas-enemigo");
 
-    // Verificar que los elementos existen
     if (!spanVidasJugador || !spanVidasEnemigo) {
         console.error("Elementos de vida no encontrados en el DOM.");
         return;
     }
 
-    // Determinamos el resultado del combate basado en los ataques
     if (ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE");
     } else if (
@@ -158,20 +185,20 @@ function combate() {
         spanVidasJugador.innerHTML = vidasJugador;
     }
 
-    // Revisamos si alguna de las vidas ha llegado a cero
     revisarVidas();
 }
 
-// Función para revisar las vidas de los jugadores
+// Modificación en la función revisarVidas para manejar la música
 function revisarVidas() {
-    if (vidasEnemigo == 0) {
-        // Si el enemigo se queda sin vidas, mostramos mensaje de victoria
-        crearMensajeFinal("¡FELICITACIONES, GANASTE! 🏆");
-    } else if (vidasJugador == 0) {
-        // Si el jugador se queda sin vidas, mostramos mensaje de derrota
-        crearMensajeFinal("PERDISTE, NO TE RINDAS 😢");
+    if (vidasJugador <= 0) {
+        crearMensajeFinal("HAS PERDIDO EL COMBATE");
+        detenerMusicaYReproducir('derrota'); // Reproduce la canción de derrota
+    } else if (vidasEnemigo <= 0) {
+        crearMensajeFinal("HAS GANADO EL COMBATE");
+        detenerMusicaYReproducir('victoria'); // Reproduce la canción de victoria
     }
 }
+
 
 // Función para crear el mensaje final del juego
 function crearMensajeFinal(resultadoFinal) {
@@ -206,8 +233,8 @@ function crearMensajeFinal(resultadoFinal) {
             if (sectionMensaje.contains(mensajeDiv)) {
                 sectionMensaje.removeChild(mensajeDiv);
             }
-        }, 500); // Duración de la animación de salida
-    }, 3000); // Duración del mensaje en pantalla
+        }, 500);
+    }, 600000);
 }
 
 // Función para crear mensajes durante el combate
@@ -225,7 +252,7 @@ function crearMensaje(resultado) {
             if (sectionMensaje.contains(mensajeAnterior)) {
                 sectionMensaje.removeChild(mensajeAnterior);
             }
-        }, 500); // Duración de la animación de salida
+        }, 500);
     }
 
     // Crear el nuevo mensaje
@@ -253,12 +280,11 @@ function crearMensaje(resultado) {
             if (sectionMensaje.contains(mensajeDiv)) {
                 sectionMensaje.removeChild(mensajeDiv);
             }
-        }, 500); // Duración de la animación de salida
-    }, 2000); // Duración del mensaje en pantalla
+        }, 500);
+    }, 2000);
 }
 
-// Iniciamos el juego cuando la página ha cargado completamente
-window.addEventListener('load', iniciarJuego);
+
 
 // Función para reproducción música
 document.addEventListener('DOMContentLoaded', function () {
@@ -270,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Reproducir sonido al hacer clic en cualquier botón
     botones.forEach(boton => {
         boton.addEventListener('click', function () {
-            // Reiniciar el audio para que pueda reproducirse nuevamente
+
             if (audioEfectoBoton) {
                 audioEfectoBoton.currentTime = 0;
                 audioEfectoBoton.play();
@@ -358,6 +384,16 @@ function playCharacterSoundOnClick(character) {
     currentCharacterSound = new Audio(sounds[character]);
     currentCharacterSound.play();
 }
+// Obtener los elementos de audio
+const audioAmbiental = document.getElementById('audio-ambiental');
+const audioJuego = document.getElementById('audio-juego');
+
+// Ajustar el volumen (valor entre 0.0 y 1.0)
+audioAmbiental.volume = 0.3;
+audioJuego.volume = 0.5;
+
+// Reproducir los audios
+audioAmbiental.play();
 
 // Añadir eventos 'click' a cada card
 document.addEventListener('DOMContentLoaded', function () {
@@ -371,3 +407,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Función para reproducir un sonido
+function reproducirSonido(src) {
+    const audio = new Audio(src);
+    audio.play();
+}
+
+// Asociamos cada botón con su sonido
+document.getElementById('boton-punio').addEventListener('click', function () {
+    reproducirSonido('assets/music/golpe.mp3');
+});
+
+document.getElementById('boton-patada').addEventListener('click', function () {
+    reproducirSonido('assets/music/patada.mp3');
+});
+
+document.getElementById('boton-barrida').addEventListener('click', function () {
+    reproducirSonido('assets/music/barrida.mp3');
+});
+
+// Iniciamos el juego cuando la página ha cargado completamente
+window.addEventListener('load', iniciarJuego);

@@ -84,6 +84,7 @@
                 </ul>
             </li>
         </ol>
+        <button id="btn-regresar" class="button">Regresar</button>
     </section>
 
     <!-- Sección para la selección de personajes -->
@@ -119,8 +120,14 @@
         <!-- Bot贸n para confirmar la selecci贸n del personaje -->
         <button id="boton-personaje" class="button-pers" data-text="Seleccionar">
             <span class="actual-btn">&nbsp;Seleccionar&nbsp;</span>
-            <span aria-hidden="true" class="hover-text">&nbsp;Seleccionar&nbsp;</span>
+
         </button>
+    </section>
+    <section id="alerta" class="alerta oculto">
+        <div class="alerta-contenido">
+            <p id="mensaje-alerta">Selecciona un personaje</p>
+            <button id="cerrar-alerta">Cerrar</button>
+        </div>
     </section>
     <!-- Sección para la selección de ataques -->
     <section id="seleccionar-ataque">
@@ -128,20 +135,26 @@
             <source src="assets/fuego5.mp4" type="video/mp4">
         </video>
 
-        <h2 class="elegir">Elige tu ataque</h2>
+        <h2 class="elegir">ATACA!</h2>
         <!-- Encabezado de segundo nivel para la sección de selección de ataques -->
 
         <div id="personajes-combate">
-            <div id="card-personaje-jugador" class="card"></div>
+            <div id="card-personaje-jugador" class="card-pers"></div>
             <p id="vs-text">VS</p>
-            <div id="card-personaje-enemigo" class="card"></div>
+            <div id="card-personaje-enemigo" class="card-pers"></div>
         </div>
-        <!-- Información del personaje seleccionado por el jugador y sus vidas -->
-        <p>Tu personaje <span id="personaje-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
+        <section class="vidas">
+            <!-- Información del personaje seleccionado por el jugador y sus vidas -->
+            <p class="vidas-personaje">
+                Tu personaje es <span id="personaje-jugador"></span> y tiene <span id="vidas-jugador">3</span> vidas
+            </p>
 
-        <!-- Información del personaje enemigo y sus vidas -->
-        <p>El personaje enemigo <span id="personaje-enemigo"></span> tiene <span id="vidas-enemigo">3</span> vidas</p>
-        <!-- Imágenes para seleccionar los diferentes tipos de ataque -->
+            <!-- Información del personaje enemigo y sus vidas -->
+            <p class="vidas-enemigo">
+                El enemigo es <span id="personaje-enemigo"></span> y tiene <span id="vidas-enemigo">3</span> vidas
+            </p>
+        </section>
+
         <div id="btn-ataques">
             <button id="boton-punio" class="btn-punio">PUÑO</button>
             <button id="boton-patada" class="btn-patada">PATADA</button>
@@ -158,7 +171,7 @@
         <!-- Botón para reiniciar el juego -->
         <button id="boton-reiniciar" class="button-rein" data-text="Reiniciar">
             <span class="rein-btn">&nbsp;Reiniciar&nbsp;</span>
-            <span aria-hidden="true" class="hover-text">&nbsp;Reiniciar&nbsp;</span>
+
         </button>
 
     </section>
