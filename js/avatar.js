@@ -389,8 +389,8 @@ const audioAmbiental = document.getElementById('audio-ambiental');
 const audioJuego = document.getElementById('audio-juego');
 
 // Ajustar el volumen (valor entre 0.0 y 1.0)
-audioAmbiental.volume = 0.3;
-audioJuego.volume = 0.5;
+audioAmbiental.volume = 0.2;
+audioJuego.volume = 0.3;
 
 // Reproducir los audios
 audioAmbiental.play();
@@ -407,6 +407,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+function detenerMusicaYReproducir(tipo) {
+    const audioVictoria = document.getElementById('audio-victoria');
+    const audioDerrota = document.getElementById('audio-derrota');
+
+    // Pausar y reiniciar ambos audios
+    audioVictoria.pause();
+    audioVictoria.currentTime = 0;
+    audioDerrota.pause();
+    audioDerrota.currentTime = 0;
+
+    // Reproducir el audio correspondiente
+    if (tipo === 'victoria') {
+        audioVictoria.play();
+    } else if (tipo === 'derrota') {
+        audioDerrota.play();
+    }
+}
 
 // Función para reproducir un sonido
 function reproducirSonido(src) {
